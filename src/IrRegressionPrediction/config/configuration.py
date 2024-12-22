@@ -1,14 +1,27 @@
-
-
+from IrRegressionPrediction.constants import CONFIG_FILE_PATH, PARAMS_FILE_PATH
+from IrRegressionPrediction.utils.common import read_yaml_file, create_directories
+from IrRegressionPrediction.entity import DataIngestionConfig
 
 class ConfigurationManager:
     def __init__(
             self,
-            config = 
+            config_filepath = CONFIG_FILE_PATH,
+            param_filepath = PARAMS_FILE_PATH
     ):
+        self.config = read_yaml_file(config_filepath)
+        self.param = read_yaml_file(param_filepath)
 
-    def getDataIngestionConfig(self):
-        root_dir: artifacts/data_ingestion
-        source_URL: https://github.com/weichange85/IrradianceML/raw/refs/heads/main/data/tableConvert.com_h52393.zip
-        local_data_file: artifacts/data_ingestion/data.zip
-        unzip_dir: artifacts/data_ingestion
+        create_directories([self.config.actifacts_roots])
+
+    def getDataIngestionConfig(self) -> DataIngestionConfig:
+        config = self.config.dataingestion
+        create_directories(config.root_dir)
+
+        dataingestionconfig = DataIngestionConfig(
+            root_dir=config.root_dir,
+            source_URL=config.source_URL,
+            local_data_file=config.local_data_file,
+            unzip_dir=config.unzip_dir,
+        )
+
+        return dataingestionconfig
