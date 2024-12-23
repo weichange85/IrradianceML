@@ -5,3 +5,7 @@
   source_URL: https://github.com/weichange85/IrradianceML/raw/refs/heads/main/data/tableConvert.com_h52393.zip
   local_data_file: artifacts/data_ingestion/data.zip
   unzip_dir: artifacts/data_ingestion
+
+ prep_bas_model:
+  root_dir: artifacts/prep_base_model
+  base_model_path: artifacts/prep_base_model/base_model.h5
