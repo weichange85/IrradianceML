@@ -11,11 +11,11 @@ class ConfigurationManager:
         self.config = read_yaml_file(config_filepath)
         self.param = read_yaml_file(param_filepath)
 
-        create_directories([self.config.actifacts_roots])
+        create_directories([self.config.artifacts_root])
 
     def getDataIngestionConfig(self) -> DataIngestionConfig:
-        config = self.config.dataingestion
-        create_directories(config.root_dir)
+        config = self.config.data_ingestion
+        create_directories([config.root_dir])
 
         dataingestionconfig = DataIngestionConfig(
             root_dir=config.root_dir,
