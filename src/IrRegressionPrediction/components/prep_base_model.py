@@ -12,6 +12,8 @@ class PrepBaseModel:
     def get_base_model(self):
         pass
 
+        #TODO: use XGBoost, define params, try to save model without inputing any data yet.
+
 
 
 
