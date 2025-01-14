@@ -8,7 +8,7 @@ class DataIngestionConfig:
     local_data_file: Path
     unzip_dir: Path
 
-@dataclass(frozen=True):
+@dataclass(frozen=True)
 class PrepareBaseModelConfig:
     root_dir: Path
     base_model_path: Path
