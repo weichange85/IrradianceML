@@ -2,9 +2,10 @@ from IrRegressionPrediction import logger
 from IrRegressionPrediction.utils.common import read_yaml_file, create_directories
 from IrRegressionPrediction.entity import PrepareBaseModelConfig
 from pathlib import Path
-import pandas as pd'
+import pandas as pd
 from xgboost import XGBClassifier
 import joblib
+import sklearn
 
 
 
@@ -28,5 +29,3 @@ class PrepBaseModel:
     def save_mode(path, model):
          # Save the model instance (untrained) to a file using joblib
         joblib.dump(model, path)
-
-        # TODO: create and run pipeline
