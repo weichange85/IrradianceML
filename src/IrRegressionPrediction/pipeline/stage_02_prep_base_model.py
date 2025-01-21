@@ -13,7 +13,6 @@ class PrepBaseModelPipeline:
         prepBaseModelConfig = configManger.getPrepBaseModelConfig()
         prepBaseModel = PrepBaseModel(prepBaseModelConfig)
         prepBaseModel.get_base_model()
-        prepBaseModel.save_mode()
 
 
 if __name__ == "__main__":

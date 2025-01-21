@@ -26,6 +26,6 @@ class PrepBaseModel:
             model = self.model
         )
     
-    def save_mode(path, model):
+    def save_model(path, model):
          # Save the model instance (untrained) to a file using joblib
         joblib.dump(model, path)
