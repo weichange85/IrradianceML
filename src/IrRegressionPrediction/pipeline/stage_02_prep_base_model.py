@@ -18,5 +18,3 @@ class PrepBaseModelPipeline:
 if __name__ == "__main__":
     prepBaseModelPipeline = PrepBaseModelPipeline()
     prepBaseModelPipeline.main()
-
-#TODO: fix pipeline
