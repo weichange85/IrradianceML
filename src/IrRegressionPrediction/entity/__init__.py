@@ -15,3 +15,11 @@ class PrepareBaseModelConfig:
     n_estimators: int
     max_depth:int
     learning_rate:int
+
+@dataclass(frozen=True)
+class PrepareBaseModelConfig:
+    root_dir: Path
+    base_model_path: Path
+    n_estimators: int
+    max_depth:int
+    learning_rate:int

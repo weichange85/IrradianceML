@@ -5,7 +5,6 @@ from pathlib import Path
 import pandas as pd
 from xgboost import XGBClassifier
 import joblib
-import sklearn
 
 
 

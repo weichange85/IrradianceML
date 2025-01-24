@@ -2,6 +2,7 @@ import urllib.request as request
 import zipfile
 import os
 from IrRegressionPrediction import logger
+from IrRegressionPrediction.utils.common import get_size
 from pathlib import Path
 from IrRegressionPrediction.entity import DataIngestionConfig
 
