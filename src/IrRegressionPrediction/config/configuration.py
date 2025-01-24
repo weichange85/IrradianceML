@@ -1,6 +1,6 @@
 from IrRegressionPrediction.constants import CONFIG_FILE_PATH, PARAMS_FILE_PATH
 from IrRegressionPrediction.utils.common import read_yaml_file, create_directories
-from IrRegressionPrediction.entity import DataIngestionConfig, PrepareBaseModelConfig
+from IrRegressionPrediction.entity import DataIngestionConfig, PrepareBaseModelConfig, TrainingConfig
 
 class ConfigurationManager:
     def __init__(
@@ -40,3 +40,18 @@ class ConfigurationManager:
         )
 
         return prepbasemodelconfig
+
+    def getTrainingConfig(self) -> TrainingConfig:
+        config = self.config.training
+        base_model_config = self.config.prep_base_model
+        params = self.param
+        create_directories([config.root_dir])
+
+        trainingConfig = TrainingConfig(
+            root_dir=config.root_dir,
+            trained_model_filepath=config.trained_model_filepath,
+            base_model_path=base_model_config.base_model_path
+            training_data= #TODO Finish setting up training config
+        )
+
+        return trainingConfig

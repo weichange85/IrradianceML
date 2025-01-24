@@ -9,3 +9,7 @@
  prep_base_model:
   root_dir: artifacts/prep_base_model
   base_model_path: artifacts/prep_base_model/base_model.h5
+
+ training:
+  root_dir: artifacts/training
+  trained_model_filepath: artifacts/training/model.h5
