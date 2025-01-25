@@ -1,6 +1,8 @@
 from IrRegressionPrediction.constants import CONFIG_FILE_PATH, PARAMS_FILE_PATH
 from IrRegressionPrediction.utils.common import read_yaml_file, create_directories
 from IrRegressionPrediction.entity import DataIngestionConfig, PrepareBaseModelConfig, TrainingConfig
+import os
+from pathlib import Path
 
 class ConfigurationManager:
     def __init__(
@@ -44,14 +46,16 @@ class ConfigurationManager:
     def getTrainingConfig(self) -> TrainingConfig:
         config = self.config.training
         base_model_config = self.config.prep_base_model
+        training_data = os.path.join(self.config.data_ingestion.unzip_dir, "tableConvert.com_h52393.csv")
         params = self.param
-        create_directories([config.root_dir])
+        create_directories([Path(config.root_dir)])
 
         trainingConfig = TrainingConfig(
             root_dir=config.root_dir,
             trained_model_filepath=config.trained_model_filepath,
-            base_model_path=base_model_config.base_model_path
-            training_data= #TODO Finish setting up training config
+            base_model_path=base_model_config.base_model_path,
+            training_data=Path(training_data),
+            params_estimator=params #TODO: try to figure how to load in the estimator param
         )
 
         return trainingConfig

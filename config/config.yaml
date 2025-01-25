@@ -13,3 +13,4 @@
  training:
   root_dir: artifacts/training
   trained_model_filepath: artifacts/training/model.h5
+  
