@@ -1,5 +1,5 @@
 from IrRegressionPrediction.constants import CONFIG_FILE_PATH, PARAMS_FILE_PATH
-from IrRegressionPrediction.utils.common import read_yaml_file, create_directories
+from IrRegressionPrediction.utils.common import read_yaml_file, create_directories, load_saved_xgb_model
 from IrRegressionPrediction.entity import DataIngestionConfig, PrepareBaseModelConfig, TrainingConfig
 import os
 from pathlib import Path
@@ -30,7 +30,7 @@ class ConfigurationManager:
     
     def getPrepBaseModelConfig(self) -> PrepareBaseModelConfig:
         config = self.config.prep_base_model
-        params = self.param
+        params = self.param.base_model
         create_directories([config.root_dir])
 
         prepbasemodelconfig = PrepareBaseModelConfig(
@@ -46,16 +46,28 @@ class ConfigurationManager:
     def getTrainingConfig(self) -> TrainingConfig:
         config = self.config.training
         base_model_config = self.config.prep_base_model
+        param = self.param.training
         training_data = os.path.join(self.config.data_ingestion.unzip_dir, "tableConvert.com_h52393.csv")
-        params = self.param
         create_directories([Path(config.root_dir)])
+        estimator = {
+            "load_model_fn": load_saved_xgb_model(base_model_config.base_model_path)
+        }
 
         trainingConfig = TrainingConfig(
             root_dir=config.root_dir,
             trained_model_filepath=config.trained_model_filepath,
             base_model_path=base_model_config.base_model_path,
             training_data=Path(training_data),
-            params_estimator=params #TODO: try to figure how to load in the estimator param
+            params_estimator=estimator,
+            params_grid={
+                'n_estimators': param.N_ESTIMATORS, 
+                'max_depth': param.MAX_DEPTH, 
+                'learning_rate': param.LEARNING_RATE
+            },
+            params_scoring=param.SCORING,
+            params_n_jobs=param.N_JOBS,
+            params_cv=param.CV,
+            params_verbose=param.VERBOSE
         )
 
         return trainingConfig

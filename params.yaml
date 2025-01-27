@@ -1,3 +1,13 @@
-N_ESTIMATORS: 2
-MAX_DEPTH: 2
-LEARNING_RATE: 1
+base_model:
+  N_ESTIMATORS: 100
+  MAX_DEPTH: 6
+  LEARNING_RATE: 0.1
+
+training:
+  N_ESTIMATORS: [100, 200]
+  MAX_DEPTH: [3, 5]
+  LEARNING_RATE: [0.01, 0.1]
+  SCORING: "accuracy"
+  N_JOBS: -1
+  CV: 3
+  VERBOSE: 2

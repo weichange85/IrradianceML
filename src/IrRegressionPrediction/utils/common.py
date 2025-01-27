@@ -5,6 +5,7 @@ from IrRegressionPrediction import logger
 import yaml
 from box.exceptions import BoxValueError
 import os
+from xgboost import Booster
 
 @ensure_annotations
 def read_yaml_file(path_to_yaml: Path) -> ConfigBox:
@@ -58,3 +59,9 @@ def get_size(path: Path) -> str:
 
     size_in_kb = round(os.path.getsize(path)/1024)
     return f"~ {size_in_kb} KB"
+
+@ensure_annotations
+def load_saved_xgb_model(path_to_model: Path):
+    model = Booster()
+    model.load_model(path_to_model)
+    return model
