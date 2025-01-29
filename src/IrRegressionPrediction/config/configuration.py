@@ -49,16 +49,12 @@ class ConfigurationManager:
         param = self.param.training
         training_data = os.path.join(self.config.data_ingestion.unzip_dir, "tableConvert.com_h52393.csv")
         create_directories([Path(config.root_dir)])
-        estimator = {
-            "load_model_fn": load_saved_xgb_model(base_model_config.base_model_path)
-        }
 
         trainingConfig = TrainingConfig(
             root_dir=config.root_dir,
             trained_model_filepath=config.trained_model_filepath,
             base_model_path=base_model_config.base_model_path,
             training_data=Path(training_data),
-            params_estimator=estimator,
             params_grid={
                 'n_estimators': param.N_ESTIMATORS, 
                 'max_depth': param.MAX_DEPTH, 

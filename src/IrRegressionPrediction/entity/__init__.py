@@ -22,7 +22,6 @@ class TrainingConfig:
     trained_model_filepath: Path
     base_model_path: Path
     training_data: Path
-    params_estimator: object
     params_grid: dict
     params_scoring: str
     params_cv: int
