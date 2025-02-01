@@ -9,8 +9,8 @@ class PrepBaseModelPipeline:
         pass
 
     def main(self):
-        configManger = ConfigurationManager()
-        prepBaseModelConfig = configManger.getPrepBaseModelConfig()
+        configManager = ConfigurationManager()
+        prepBaseModelConfig = configManager.getPrepBaseModelConfig()
         prepBaseModel = PrepBaseModel(prepBaseModelConfig)
         prepBaseModel.get_base_model()
 

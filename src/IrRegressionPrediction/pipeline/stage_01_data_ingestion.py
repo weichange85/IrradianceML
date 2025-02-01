@@ -9,8 +9,8 @@ class DataIngestionPipeline:
         pass
 
     def main(self):
-        configManger = ConfigurationManager()
-        dataIngestionConfig = configManger.getDataIngestionConfig()
+        configManager = ConfigurationManager()
+        dataIngestionConfig = configManager.getDataIngestionConfig()
         dataIngestion = DataIngestion(dataIngestionConfig)
         dataIngestion.download_file()
         dataIngestion.extract_zip_file()

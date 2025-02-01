@@ -5,7 +5,6 @@ from pathlib import Path
 import pandas as pd
 from xgboost import XGBClassifier
 from sklearn.model_selection import GridSearchCV, train_test_split
-
 import joblib
 
 class Training:
@@ -34,8 +33,9 @@ class Training:
         Clean and prepare the data for training, return X and Y varaibles.
         """
         raw_data = self.load_data()
-        pass
-    #Return X, Y TODO
+        X = raw_data.drop(columns=["DATE (MM/DD/YYYY)", "TOT Global Horiz [kW-hr/m^2]"])
+        Y = raw_data["TOT Global Horiz [kW-hr/m^2]"]
+        return X, Y
 
     def define_grid_search(self):
         """
