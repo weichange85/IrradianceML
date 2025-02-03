@@ -24,7 +24,8 @@ class Training:
         Load in data from artifacts/data_ingestion/data
         """
         input_data = pd.read_csv(
-            self.config.training_data
+            self.config.training_data,
+            header=1
         )
         return input_data
     
@@ -33,6 +34,7 @@ class Training:
         Clean and prepare the data for training, return X and Y varaibles.
         """
         raw_data = self.load_data()
+        raw_data = raw_data.dropna().reset_index(drop=True).drop(columns=["|"], errors="ignore")
         X = raw_data.drop(columns=["DATE (MM/DD/YYYY)", "TOT Global Horiz [kW-hr/m^2]"])
         Y = raw_data["TOT Global Horiz [kW-hr/m^2]"]
         return X, Y

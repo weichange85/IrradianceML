@@ -3,7 +3,7 @@ from IrRegressionPrediction.utils.common import read_yaml_file, create_directori
 from IrRegressionPrediction.entity import PrepareBaseModelConfig
 from pathlib import Path
 import pandas as pd
-from xgboost import XGBClassifier
+from xgboost import XGBRegressor
 import joblib
 
 
@@ -13,7 +13,7 @@ class PrepBaseModel:
         self.config = config
 
     def get_base_model(self):
-        self.model = XGBClassifier(
+        self.model = XGBRegressor(
             n_estimators = self.config.n_estimators,
             max_depth = self.config.max_depth,
             learning_rate = self.config.learning_rate
