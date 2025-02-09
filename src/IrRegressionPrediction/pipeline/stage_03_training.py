@@ -18,4 +18,4 @@ class TrainingPipeline:
 if __name__=="__main__":
     trainingPipeline = TrainingPipeline()
     trainingPipeline.main()
-    #TODO: fix error
+    #TODO: fix error, get rid of last row
