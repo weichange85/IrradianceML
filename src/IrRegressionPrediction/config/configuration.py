@@ -1,6 +1,6 @@
 from IrRegressionPrediction.constants import CONFIG_FILE_PATH, PARAMS_FILE_PATH
 from IrRegressionPrediction.utils.common import read_yaml_file, create_directories, load_saved_xgb_model
-from IrRegressionPrediction.entity import DataIngestionConfig, PrepareBaseModelConfig, TrainingConfig
+from IrRegressionPrediction.entity import DataIngestionConfig, PrepareBaseModelConfig, TrainingConfig, ModelEvaluationConfig
 import os
 from pathlib import Path
 
@@ -67,3 +67,9 @@ class ConfigurationManager:
         )
 
         return trainingConfig
+    
+    def getModelEvaluationConfig(self) -> ModelEvaluationConfig:
+        pass
+    ###TODO###
+
+        return ModelEvaluationConfig

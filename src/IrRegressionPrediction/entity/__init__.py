@@ -27,3 +27,8 @@ class TrainingConfig:
     params_cv: int
     params_verbose: int
     params_n_jobs: int
+
+@dataclass(frozen=True)
+class ModelEvaluationConfig:
+    model_path: Path
+    pass ##TODO##

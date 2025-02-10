@@ -35,6 +35,7 @@ class Training:
         """
         raw_data = self.load_data()
         raw_data = raw_data.dropna().reset_index(drop=True).drop(columns=["|"], errors="ignore")
+        raw_data = raw_data.drop(raw_data.index[-1])
         X = raw_data.drop(columns=["DATE (MM/DD/YYYY)", "TOT Global Horiz [kW-hr/m^2]"])
         X.columns = X.columns.str.replace(r'\[', '(', regex=True).str.replace(r'\]', ')', regex=True)
         Y = raw_data["TOT Global Horiz [kW-hr/m^2]"]
