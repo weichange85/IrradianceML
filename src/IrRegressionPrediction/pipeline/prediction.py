@@ -43,7 +43,7 @@ class PredictionPipeline:
 if __name__ == "__main__":
     # Example input
     input_features = {
-        'MAX Global Horiz (W/m^2)': 800,
+        'MAX Global Horiz (W/m^2)': 700,
         'TOT Direct Normal (kW-hr/m^2)': 4.5,
         'MAX Direct Normal (W/m^2)': 950,
         'TOT Diffuse Horiz (calc) (kW-hr/m^2)': 2.3,
